@@ -129,8 +129,20 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/media/'
+# Media files
+
+
+DEFAULT_FILE_STORAGE = 'main.storage.BunnyStorage'
+
+MEDIA_URL = 'https://inginerium.b-cdn.net/inginerium/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Bunny.net CDN Access
+#
+
+BUNNY_ZONENAME = 'inginerium'
+
+BUNNY_PASSWORD = '21970a33-2e3c-43bb-856b8b3c1a46-6d25-4e0c'
 
 
 # Email configs
@@ -142,7 +154,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-SECURE_SSL_REDIRECT = True
+# In development environment set this to false
+# SECURE_SSL_REDIRECT = True
 
 #S3 BUCKETS CONFIG
 
