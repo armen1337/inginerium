@@ -65,7 +65,8 @@ class TopHeroImage(models.Model):
 	image = models.ImageField(
 			"Картинка",
 			upload_to = "top_hero_images/",
-			null = True
+			null = True,
+			blank = True
 		)
 	enabled = models.BooleanField(default = True)
 
