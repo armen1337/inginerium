@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main',
+
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +81,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'inginerium',
+        'USER': 'inginerium',
+        'PASSWORD': 'Mane1994',
+        'HOST': 'database-1.c4icyxwaaylq.us-east-2.rds.amazonaws.com',
+        'PORT': '5432',
     }
 }
 
@@ -123,26 +129,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Media files
 
 
-DEFAULT_FILE_STORAGE = 'main.storage.BunnyStorage'
-
-MEDIA_URL = 'https://inginerium.b-cdn.net/inginerium/media/'
-MEDIA_ROOT = 'https://inginerium.b-cdn.net/inginerium/media/'
-
-# Bunny.net CDN Access
-#
-
-BUNNY_ZONENAME = 'inginerium'
-
-BUNNY_PASSWORD = '21970a33-2e3c-43bb-856b8b3c1a46-6d25-4e0c'
 
 
 # Email configs
@@ -159,17 +150,40 @@ SECURE_SSL_REDIRECT = True
 
 #S3 BUCKETS CONFIG
 
-# AWS_ACCESS_KEY_ID = ''
-# AWS_SECRET_ACCESS_KEY = ''
-# AWS_STORAGE_BUCKET_NAME = ''
-# AWS_S3_FILE_OVERWRITE = False
-# AWS_DEFAULT_ACL = None
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = 'inginerium-bucket'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_REGION_NAME = "us-east-2"
+# AWS_S3_HOST = "s3.us-east-2.amazonaws.com"
+
+AWS_LOCATION = 'media'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 
 '''
+
 <?xml version="1.0" encoding="UTF-8"?>
 <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
 <CORSRule>
@@ -180,4 +194,23 @@ SECURE_SSL_REDIRECT = True
     <AllowedHeader>*</AllowedHeader>
 </CORSRule>
 </CORSConfiguration>
+
+JSON form
+
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "POST",
+            "GET",
+            "PUT"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ]
+    }
+]
+
 '''

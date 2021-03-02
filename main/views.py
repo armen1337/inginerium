@@ -22,7 +22,7 @@ def home(request):
 		hero_images = None
 
 
-	services = Service.objects.all()
+	services = Service.objects.all().order_by('id')
 
 
 	tdata = Translate.objects.first()
