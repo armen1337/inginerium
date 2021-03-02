@@ -84,11 +84,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'inginerium',
         'USER': 'inginerium',
-        'PASSWORD': 'Mane1994',
+        'PASSWORD': os.getenv("DB_PASSWORD"),
         'HOST': 'database-1.c4icyxwaaylq.us-east-2.rds.amazonaws.com',
         'PORT': '5432',
     }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES["default"].update(db_from_env)
 
 
 # Password validation
