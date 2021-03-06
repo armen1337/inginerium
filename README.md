@@ -23,7 +23,7 @@ python3 manage.py runserver
 <h3> Run the following command for first time before running</h3>
 
 ```
-python3 -m pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 <h3> And then just run the server from your terminal
