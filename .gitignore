@@ -1,2 +1,6 @@
 venv/
 *.sh
+media/hero_images/
+media/service_images/
+media/top_hero_images/
+media/colleague_images/

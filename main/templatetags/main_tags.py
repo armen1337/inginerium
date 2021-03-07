@@ -21,21 +21,33 @@ def return_last_three(value):
 @register.filter
 def get_title_am(value, index):
 	try:
-		return value[int(index - 1)].title_am
+		result = value[int(index - 1)].title_am
+		if result:
+			return result
+		else:
+			return ''
 	except:
 		return ''
 
 @register.filter
 def get_title_ru(value, index):
 	try:
-		return value[int(index - 1)].title_ru
+		result = value[int(index - 1)].title_ru
+		if result:
+			return result
+		else:
+			return ''
 	except:
 		return ''
 
 @register.filter
 def get_title_en(value, index):
 	try:
-		return value[int(index - 1)].title_en
+		result = value[int(index - 1)].title_en
+		if result:
+			return result
+		else:
+			return ''
 	except:
 		return ''
 
@@ -43,20 +55,32 @@ def get_title_en(value, index):
 @register.filter
 def get_content_am(value, index):
 	try:
-		return value[int(index - 1)].content_am
+		result = value[int(index - 1)].content_am
+		if result:
+			return result
+		else:
+			return ''
 	except:
 		return ''
 
 @register.filter
 def get_content_ru(value, index):
 	try:
-		return value[int(index - 1)].content_ru
+		result = value[int(index - 1)].content_ru
+		if result:
+			return result
+		else:
+			return ''
 	except:
 		return ''
 
 @register.filter
 def get_content_en(value, index):
 	try:
-		return value[int(index - 1)].content_en
+		result = value[int(index - 1)].content_en
+		if result:
+			return result
+		else:
+			return ''
 	except:
 		return ''
