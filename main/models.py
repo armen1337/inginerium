@@ -230,6 +230,22 @@ class Translate(models.Model):
 	contact_ru = models.CharField("Обратная связь (RU)", max_length = 255)
 	contact_en = models.CharField("Обратная связь (EN)", max_length = 255)
 
+	partners_am = models.CharField(
+			"Партнёры (AM)",
+			null = True,
+			max_length = 255
+		)
+	partners_ru = models.CharField(
+			"Партнёры (RU)",
+			null = True,
+			max_length = 255
+		)
+	partners_en = models.CharField(
+			"Партнёры (EN)",
+			null = True,
+			max_length = 255
+		)
+
 	work_time_am = models.CharField(
 			"Рабочее время (AM)",
 			max_length = 255,

@@ -22,8 +22,8 @@ class ColleagueImageInline(admin.StackedInline):
 
 	get_image.short_description = "Обзор"
 
-	verbose_name = "Картинка коллеги"
-	verbose_name_plural = "Картинки коллег"
+	verbose_name = "Картинка партнёра"
+	verbose_name_plural = "Картинки партнёров"
 
 
 @admin.register(ColleagueImageConf)
