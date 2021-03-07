@@ -109,9 +109,14 @@ class ColleagueImageConf(models.Model):
 		)
 	enabled = models.BooleanField(default = False)
 
+	def __str__(self):
+		if self.title:
+			return self.title
+		return f"Безымянный {self.id}"
+
 	class Meta:
-		verbose_name = "Блок коллег"
-		verbose_name_plural = "Блоки коллег"
+		verbose_name = "Блок партнёра"
+		verbose_name_plural = "Блоки партнёров"
 
 
 class ColleagueImage(models.Model):
