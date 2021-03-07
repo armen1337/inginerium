@@ -100,6 +100,38 @@ class TopHeroImage(models.Model):
 		return ""
 
 
+class ColleagueImageConf(models.Model):
+	title = models.CharField(
+			"Заголовок",
+			null = True,
+			blank = True,
+			max_length = 100
+		)
+	enabled = models.BooleanField(default = False)
+
+	class Meta:
+		verbose_name = "Блок коллег"
+		verbose_name_plural = "Блоки коллег"
+
+
+class ColleagueImage(models.Model):
+	colleague_image_conf = models.ForeignKey(
+			ColleagueImageConf,
+			on_delete = models.SET_NULL,
+			null = True
+		)
+	image = models.ImageField(
+			"Картинка",
+			upload_to = "colleague_images/",
+			null = True,
+			blank = True
+		)
+
+	def __str__(self):
+		return ""
+
+
+
 class Service(models.Model):
 	title_am = models.CharField(
 			"Заголовок (AM)",
@@ -364,205 +396,6 @@ class Translate(models.Model):
 			null = True
 		)
 
-	# sales manager
-
-	sales_manager_am = models.CharField(
-			"Менеджер продаж (AM)",
-			max_length = 255,
-			null = True
-		)
-	sales_manager_ru = models.CharField(
-			"Менеджер продаж (RU)",
-			max_length = 255,
-			null = True
-		)
-	sales_manager_en = models.CharField(
-			"Менеджер продаж (EN)",
-			max_length = 255,
-			null = True
-		)
-
-	sales_manager_name_am = models.CharField(
-			"Имя менеджера продаж (AM)",
-			max_length = 255,
-			null = True
-		)
-	sales_manager_name_ru = models.CharField(
-		"Имя менеджера продаж (RU)",
-		max_length = 255,
-		null = True
-	)
-	sales_manager_name_en = models.CharField(
-		"Имя менеджера продаж (EN)",
-		max_length = 255,
-		null = True
-	)
-
-	sales_manager_number = models.CharField(
-		"Номер менеджера продаж",
-		max_length = 255,
-		null = True
-	)
-
-	# director
-
-	director_am = models.CharField(
-			"Директор (AM)",
-			max_length = 255,
-			null = True
-		)
-	director_ru = models.CharField(
-			"Директор (RU)",
-			max_length = 255,
-			null = True
-		)
-	director_en = models.CharField(
-			"Директор (EN)",
-			max_length = 255,
-			null = True
-		)
-
-	director_name_am = models.CharField(
-			"Имя директора (AM)",
-			max_length = 255,
-			null = True
-		)
-	director_name_ru = models.CharField(
-		"Имя директора (RU)",
-		max_length = 255,
-		null = True
-	)
-	director_name_en = models.CharField(
-		"Имя директора (EN)",
-		max_length = 255,
-		null = True
-	)
-
-	director_number = models.CharField(
-		"Номер директора",
-		max_length = 255,
-		null = True
-	)
-
-	# ingenier
-
-	ingenier_am = models.CharField(
-			"Инженер (AM)",
-			max_length = 255,
-			null = True
-		)
-	ingenier_ru = models.CharField(
-			"Инженер (RU)",
-			max_length = 255,
-			null = True
-		)
-	ingenier_en = models.CharField(
-			"Инженер (EN)",
-			max_length = 255,
-			null = True
-		)
-
-	ingenier_name_am = models.CharField(
-			"Имя инженера (AM)",
-			max_length = 255,
-			null = True
-		)
-	ingenier_name_ru = models.CharField(
-			"Имя инженера (RU)",
-			max_length = 255,
-			null = True
-		)
-	ingenier_name_en = models.CharField(
-			"Имя инженера (EN)",
-			max_length = 255,
-			null = True
-		)
-
-	ingenier_number = models.CharField(
-		"Номер инженера",
-		max_length = 255,
-		null = True
-	)
-
-	# finance
-
-	finance_am = models.CharField(
-			"Руководитель финансового отдела (AM)",
-			max_length = 255,
-			null = True
-		)
-	finance_ru = models.CharField(
-			"Руководитель финансового отдела (RU)",
-			max_length = 255,
-			null = True
-		)
-	finance_en = models.CharField(
-			"Руководитель финансового отдела (EN)",
-			max_length = 255,
-			null = True
-		)
-
-	finance_name_am = models.CharField(
-			"Имя руководителя финансового отдела (AM)",
-			max_length = 255,
-			null = True
-		)
-	finance_name_ru = models.CharField(
-			"Имя руководителя финансового отдела (RU)",
-			max_length = 255,
-			null = True
-		)
-	finance_name_en = models.CharField(
-			"Имя руководителя финансового отдела (EN)",
-			max_length = 255,
-			null = True
-		)
-
-	finance_number = models.CharField(
-		"Номер руководителя финансового отдела",
-		max_length = 255,
-		null = True
-	)
-
-	# external
-
-	external_am = models.CharField(
-			"Руководитель отдела внешних связей и департамента импорта (AM)",
-			max_length = 255,
-			null = True
-		)
-	external_ru = models.CharField(
-			"Руководитель отдела внешних связей и департамента импорта (RU)",
-			max_length = 255,
-			null = True
-		)
-	external_en = models.CharField(
-			"Руководитель отдела внешних связей и департамента импорта (EN)",
-			max_length = 255,
-			null = True
-		)
-
-	external_name_am = models.CharField(
-			"Имя руководителя отдела внешних связей и департамента импорта (AM)",
-			max_length = 255,
-			null = True
-		)
-	external_name_ru = models.CharField(
-			"Имя руководителя отдела внешних связей и департамента импорта (RU)",
-			max_length = 255,
-			null = True
-		)
-	external_name_en = models.CharField(
-			"Имя руководителя отдела внешних связей и департамента импорта (EN)",
-			max_length = 255,
-			null = True
-		)
-
-	external_number = models.CharField(
-		"Номер руководителя отдела внешних связей и департамента импорта",
-		max_length = 255,
-		null = True
-	)
 
 	# address
 

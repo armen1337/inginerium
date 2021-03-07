@@ -1,13 +1,42 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import (HeroImage, HeroImageConf, TopHeroImage,
-	TopHeroImageConf, Translate, Service, ServiceImage)
+from .models import *
 
 
 admin.site.site_header = "Inginerium"
 admin.site.site_title = "Inginerium"
 admin.site.index_title = "Администрирование Inginerium"
+
+
+class ColleagueImageInline(admin.StackedInline):
+	model = ColleagueImage
+	extra = 1
+	readonly_fields = ("get_image",)
+
+	fields = ("image", "get_image")
+
+	def get_image(self, obj):
+		return mark_safe(f"""<img src="{obj.image.url}"
+			width="400px">""")
+
+	get_image.short_description = "Обзор"
+
+	verbose_name = "Картинка коллеги"
+	verbose_name_plural = "Картинки коллег"
+
+
+@admin.register(ColleagueImageConf)
+class ColleagueImageConfAdmin(admin.ModelAdmin):
+	model = ColleagueImageConf
+	list_display = ("__str__", "enabled")
+	list_editable = ("enabled",)
+
+	save_on_top = True
+
+	inlines = [ColleagueImageInline]
+
+	fields = ("title", "enabled")
 
 
 @admin.register(Translate)

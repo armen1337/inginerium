@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 
 from .models import (HeroImageConf, TopHeroImageConf,
-	Translate, Service)
+	Translate, Service, ColleagueImageConf)
 
 
 def home(request):
@@ -21,6 +21,14 @@ def home(request):
 	except:
 		hero_images = None
 
+	# colleague images
+
+	colleague_image_conf = ColleagueImageConf.objects.filter(enabled = True).first()
+	try:
+		colleague_images = colleague_image_conf.colleagueimage_set.all()
+	except:
+		colleague_images = None
+
 
 	services = Service.objects.all().order_by('id')
 
@@ -31,6 +39,7 @@ def home(request):
 	context = {
 		"hero_images": hero_images,
 		"top_hero_images": top_hero_images,
+		"colleagues": colleague_images,
 		"tdata": tdata,
 		"services": services
 	}

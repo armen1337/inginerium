@@ -120,7 +120,7 @@
     border: 1px solid #ccc;
     margin: 0 auto;
     background-color: #fff;
-    
+    border-radius: 1em;
 }
 
 .select__icon{
@@ -148,7 +148,6 @@
 
 .select__body{
     border: 1px solid #ccc;
-    border-top: 0;
     position: absolute;
     left: 0;
     right: 0;
@@ -157,15 +156,18 @@
     display: none;
     z-index: 22222222;
     background-color: #fff;
+    border-radius: 1em;
     margin: 0 auto;
+    margin-top: 10px;
 }
 
 .select__item{
-    padding: 8px;
+    padding: 8.5px;
     line-height: 24px;
     font-size: 16px;
     transition: all .2s linear;
     cursor: pointer;
+    border-radius: 1em;
     text-align: center;
 }
 
@@ -212,6 +214,18 @@
     height: 20px;
 }
 
+#triangle-topleft {
+    
+    border-top: 50px solid red;
+    border-right: 50px solid transparent;
+    position: absolute;
+    top: 0;left: 0;    
+    opacity: 0;
+  }
+
+  #partner__img{
+      margin-top: 30px;
+  }
 @media(max-width:770px){
     .lang__container{
         position: static;
@@ -225,10 +239,36 @@
     }
 
 }
-
+#logo{
+    display: none;
+}
 @media(max-width:1000px){
     .custom-navbar .nav li a{
         font-size: 11px;
     }
 }
+
+@media(max-width:767px){
+    #logo1{
+        display: none;
+    }
+    #logo{
+        margin-left: 25px;
+        display: block;
+    }
+    #triangle-topleft{
+        opacity: 1;
+    }
+}
   
+.custom-navbar.top-nav-collapse #triangle-topleft{
+    opacity: 1;
+}
+
+.custom-navbar.top-nav-collapse #logo{
+    display: block;
+}
+
+.custom-navbar.top-nav-collapse #logo1{
+    display: none;
+}
