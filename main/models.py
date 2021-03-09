@@ -29,7 +29,8 @@ class HeroImage(models.Model):
 	image = models.ImageField(
 			"Картинка",
 			upload_to = "hero_images/",
-			null = True
+			null = True,
+			blank = True
 		)
 	enabled = models.BooleanField(default = True)
 
@@ -134,7 +135,6 @@ class ColleagueImage(models.Model):
 
 	def __str__(self):
 		return ""
-
 
 
 class Service(models.Model):
