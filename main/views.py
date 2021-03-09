@@ -47,17 +47,17 @@ def home(request):
 
 
 def contact_us(request):
-	if request.method == "POST":
-		message = request.POST["message"]
-		email = request.POST["email"]
-		name = request.POST["name"]
-		message = f"От: {name}\nEmail: {email}\n{message}"
+	# if request.method == "POST":
+	# 	message = request.POST["message"]
+	# 	email = request.POST["email"]
+	# 	name = request.POST["name"]
+	# 	message = f"От: {name}\nEmail: {email}\n{message}"
 
-		send_mail(
-			"Test",
-			message,
-			email,
-			[settings.EMAIL_HOST_USER],
-		)
+	# 	send_mail(
+	# 		"Test",
+	# 		message,
+	# 		email,
+	# 		[settings.EMAIL_HOST_USER],
+	# 	)
 
 	return redirect("/")
