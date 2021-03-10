@@ -15,8 +15,6 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-SESSION_COOKIE_SECURE = True
-
 
 ALLOWED_HOSTS = [
     "inginerium.am",
