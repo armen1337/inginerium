@@ -1,4 +1,6 @@
 from django.contrib import admin
+from django.db import models
+from django.forms import TextInput, Textarea
 from django.utils.safestring import mark_safe
 
 from .models import *
@@ -136,4 +138,8 @@ class ServiceAdmin(admin.ModelAdmin):
 	save_on_top = True
 
 	inlines = [ServiceImageInline]
+
+	formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows':6, 'cols':60})},
+    }
 	

@@ -194,7 +194,7 @@ http://www.templatemo.com/tm-515-eatery
                               </div>
                               <div class="select__body">
                                    {% for service in services %}
-                                   <div class="select__item lang"  key='service{{forloop.counter}}-title'></div>
+                                   <div class="select__item lang"  key='service{{forloop.counter}}-title'>{# services|get_title_am:forloop.counter #}</div>
                                    {% endfor %}
                               </div>
                          </div>
