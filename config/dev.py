@@ -11,5 +11,7 @@ DATABASES = {
     }
 }
 
+SECRET_KEY = 'asdasd'
+
 
 SECURE_SSL_REDIRECT = False

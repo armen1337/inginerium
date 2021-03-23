@@ -17,6 +17,12 @@ selectHeader.addEventListener("click",function(){
     
 })
 
+// let body = document.querySelector("body")
+// body.addEventListener("click",function(){
+//     selectHeader.parentElement.classList.remove("active")
+// })
+
+
 for(let i=0;i<selectItem.length;i++){
     selectItem[i].addEventListener("click",function(){
         let text=this.innerText,

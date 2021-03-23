@@ -1,3 +1,7 @@
 venv/
 *.sh
 media/*/
+__pycache__/
+*/__pycache__/
+*/*/__pycache__/
+*/*/*/__pycache__/

@@ -424,6 +424,7 @@
               $(this).text(arrLang[lang][$(this).attr('key')]);
               $(this).attr("placeholder",arrLang[lang][$(this).attr('key')])
           });
+          $('.select__current').text($('.select__item').first().text())
       });
   });
 
