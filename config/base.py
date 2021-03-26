@@ -18,6 +18,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "inginerium.am",
+    "www.inginerium.am",
     "inginerium.herokuapp.com",
     "localhost",
     "127.0.0.1"
